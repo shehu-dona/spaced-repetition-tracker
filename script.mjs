@@ -5,6 +5,7 @@
 // You can't open the index.html file using a file:// URL.
 
 import { getUserIds } from "./common.mjs";
+const select = document.querySelector("#user-select");
 
 window.onload = function () {
   populateSelect();
@@ -12,7 +13,6 @@ window.onload = function () {
 
 function populateSelect() {
   const users = getUserIds();
-  const select = document.querySelector("#user-select");
   users.forEach((id) => {
     const option = document.createElement("option");
     option.value = id;
@@ -20,3 +20,7 @@ function populateSelect() {
     select.append(option);
   });
 }
+
+select.addEventListener("change", () => {
+  console.log(select.value);
+});
