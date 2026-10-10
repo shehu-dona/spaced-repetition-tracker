@@ -5,6 +5,7 @@
 // You can't open the index.html file using a file:// URL.
 
 import { getUserIds } from "./common.mjs";
+import { getData } from "./storage.mjs";
 const select = document.querySelector("#user-select");
 const agenda = document.querySelector("#agenda");
 
@@ -26,7 +27,22 @@ function populateSelect() {
   });
 }
 
+function renderAgenda() {
+  agenda.textContent = "";
+  if (state.selectedUserId === "") {
+    return;
+  }
+  const data = getData(state.selectedUserId);
+
+  if (data === null || data.length === 0) {
+    const paragraph = document.createElement("p");
+    paragraph.textContent = "This user has no agenda yet.";
+    agenda.appendChild(paragraph);
+    return;
+  }
+}
+
 select.addEventListener("change", () => {
   state.selectedUserId = select.value;
-  console.log(state);
+  renderAgenda();
 });
