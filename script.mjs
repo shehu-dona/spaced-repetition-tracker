@@ -6,6 +6,11 @@
 
 import { getUserIds } from "./common.mjs";
 const select = document.querySelector("#user-select");
+const agenda = document.querySelector("#agenda");
+
+const state = {
+  selectedUserId: "",
+};
 
 window.onload = function () {
   populateSelect();
@@ -22,5 +27,6 @@ function populateSelect() {
 }
 
 select.addEventListener("change", () => {
-  console.log(select.value);
+  state.selectedUserId = select.value;
+  console.log(state);
 });
