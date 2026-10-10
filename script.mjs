@@ -7,6 +7,16 @@
 import { getUserIds } from "./common.mjs";
 
 window.onload = function () {
-  const users = getUserIds();
-  document.querySelector("body").innerText = `There are ${users.length} users`;
+  populateSelect();
 };
+
+function populateSelect() {
+  const users = getUserIds();
+  const select = document.querySelector("#user-select");
+  users.forEach((id) => {
+    const option = document.createElement("option");
+    option.value = id;
+    option.textContent = `User ${id}`;
+    select.append(option);
+  });
+}
