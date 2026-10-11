@@ -12,3 +12,11 @@ export function parseDate(dateString) {
   const [year, month, day] = dateNumber; // destructuring: year = 2027, month = 7, day = 19
   return new Date(Date.UTC(year, month - 1, day)); // makes a UTC date ; month - 1 because JavaScript months start at 0 (July = 6)
 }
+
+export function addDays(date, days) {
+  // takes a Date and a number of days to add
+  const newDate = new Date(date); // makes a copy, so the original date never changes
+  newDate.setUTCDate(newDate.getUTCDate() + days); // reads the day (19), adds the days (+7), writes it back (26)
+  console.log(newDate);
+  return newDate; // gives back the new date
+}
