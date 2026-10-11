@@ -20,3 +20,10 @@ export function addDays(date, days) {
   console.log(newDate);
   return newDate; // gives back the new date
 }
+
+export function addMonths(date, months) {
+  // takes a Date and a number of months to add
+  const newDate = new Date(date); // makes a copy, so the original date never changes
+  newDate.setUTCMonth(newDate.getUTCMonth() + months); // reads the month (July = 6), adds the months (+1 = 7), writes it back (August); if it goes past December, JavaScript moves to the next year
+  return newDate; // gives back the new date
+}
