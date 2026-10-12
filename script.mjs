@@ -15,6 +15,7 @@ const state = {
 
 window.onload = function () {
   populateSelect();
+  addTodaysDate();
 };
 
 function populateSelect() {
@@ -46,3 +47,13 @@ select.addEventListener("change", () => {
   state.selectedUserId = select.value;
   renderAgenda();
 });
+
+function addTodaysDate() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+  const stringDate = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  const dateInput = document.querySelector("#date");
+  dateInput.value = stringDate;
+}
