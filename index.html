@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <script type="module" src="script.mjs"></script>
@@ -12,6 +12,18 @@
       <select id="user-select">
         <option value="">Select a User</option>
       </select>
+    </section>
+    <section>
+      <h2>Add a topic</h2>
+      <form id="topic-form">
+        <label for="topic">Topic name</label>
+        <input id="topic" type="text" required />
+        <label for="date">Pick a date</label>
+        <input id="date" type="date" required />
+        <div>
+          <button type="submit">Add Topic</button>
+        </div>
+      </form>
     </section>
     <section>
       <h2>Agenda</h2>
