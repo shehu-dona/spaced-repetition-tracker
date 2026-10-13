@@ -10,7 +10,7 @@ import {
   calculateRevisionDates,
 } from "./common.mjs";
 
-import { getData } from "./storage.mjs";
+import { getData, addData } from "./storage.mjs";
 
 const select = document.querySelector("#user-select");
 const agenda = document.querySelector("#agenda");
@@ -79,4 +79,7 @@ form.addEventListener("submit", (event) => {
   const agendaItems = revisionDates.map((revisionDate) => {
     return { topic: topic, date: revisionDate };
   });
+  addData(state.selectedUserId, agendaItems);
+  topicInput.value = "";
+  renderAgenda();
 });
