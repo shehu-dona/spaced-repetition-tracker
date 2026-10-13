@@ -4,7 +4,7 @@
 // Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server
 // You can't open the index.html file using a file:// URL.
 
-import { getUserIds } from "./common.mjs";
+import { getUserIds, getTodayString } from "./common.mjs";
 import { getData } from "./storage.mjs";
 const select = document.querySelector("#user-select");
 const agenda = document.querySelector("#agenda");
@@ -49,11 +49,6 @@ select.addEventListener("change", () => {
 });
 
 function addTodaysDate() {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth() + 1;
-  const day = now.getDate();
-  const stringDate = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
   const dateInput = document.querySelector("#date");
-  dateInput.value = stringDate;
+  dateInput.value = getTodayString();
 }

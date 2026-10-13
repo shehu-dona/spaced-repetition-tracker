@@ -44,3 +44,12 @@ export function calculateRevisionDates(dateString) {
   });
   return stringRevisionDates;
 }
+
+export function getTodayString() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+  const stringDate = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  return stringDate;
+}
