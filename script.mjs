@@ -51,6 +51,17 @@ function renderAgenda() {
     agenda.appendChild(paragraph);
     return;
   }
+  const upcomingItems = data.filter((item) => {
+    return item.date >= getTodayString();
+  });
+  if (upcomingItems.length === 0) {
+    const paragraph = document.createElement("p");
+    paragraph.textContent =
+      "No upcoming revisions. All revision dates are in the past.";
+    agenda.appendChild(paragraph);
+    return;
+  }
+  console.log(upcomingItems);
 }
 
 select.addEventListener("change", () => {
