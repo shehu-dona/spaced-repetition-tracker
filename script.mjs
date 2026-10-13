@@ -11,6 +11,7 @@ const agenda = document.querySelector("#agenda");
 const dateInput = document.querySelector("#date");
 const form = document.querySelector("#topic-form");
 const topicInput = document.querySelector("#topic");
+const formMessage = document.querySelector("#form-message");
 
 const state = {
   selectedUserId: "",
@@ -57,6 +58,12 @@ function addTodaysDate() {
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+  formMessage.textContent = "";
+  if (state.selectedUserId === "") {
+    formMessage.textContent = "Please select a user first.";
+
+    return;
+  }
 
   console.log(topicInput.value);
   console.log(dateInput.value);
