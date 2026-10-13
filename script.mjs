@@ -61,7 +61,14 @@ function renderAgenda() {
     agenda.appendChild(paragraph);
     return;
   }
-  console.log(upcomingItems);
+  upcomingItems.sort((a, b) => a.date.localeCompare(b.date));
+  const orderedList = document.createElement("ol");
+  agenda.appendChild(orderedList);
+  upcomingItems.forEach((item) => {
+    const listElement = document.createElement("li");
+    listElement.textContent = `${item.date}: ${item.topic}`;
+    orderedList.appendChild(listElement);
+  });
 }
 
 select.addEventListener("change", () => {
