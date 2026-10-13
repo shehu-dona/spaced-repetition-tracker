@@ -4,8 +4,14 @@
 // Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server
 // You can't open the index.html file using a file:// URL.
 
-import { getUserIds, getTodayString } from "./common.mjs";
+import {
+  getUserIds,
+  getTodayString,
+  calculateRevisionDates,
+} from "./common.mjs";
+
 import { getData } from "./storage.mjs";
+
 const select = document.querySelector("#user-select");
 const agenda = document.querySelector("#agenda");
 const dateInput = document.querySelector("#date");
@@ -61,10 +67,16 @@ form.addEventListener("submit", (event) => {
   formMessage.textContent = "";
   if (state.selectedUserId === "") {
     formMessage.textContent = "Please select a user first.";
-
     return;
   }
-
-  console.log(topicInput.value);
-  console.log(dateInput.value);
+  const topic = topicInput.value.trim();
+  if (topic === "") {
+    formMessage.textContent = "Please enter a topic";
+    return;
+  }
+  const date = dateInput.value;
+  const revisionDates = calculateRevisionDates(date);
+  const agendaItems = revisionDates.map((revisionDate) => {
+    return { topic: topic, date: revisionDate };
+  });
 });
