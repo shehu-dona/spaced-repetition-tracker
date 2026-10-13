@@ -8,6 +8,9 @@ import { getUserIds, getTodayString } from "./common.mjs";
 import { getData } from "./storage.mjs";
 const select = document.querySelector("#user-select");
 const agenda = document.querySelector("#agenda");
+const dateInput = document.querySelector("#date");
+const form = document.querySelector("#topic-form");
+const topicInput = document.querySelector("#topic");
 
 const state = {
   selectedUserId: "",
@@ -49,6 +52,12 @@ select.addEventListener("change", () => {
 });
 
 function addTodaysDate() {
-  const dateInput = document.querySelector("#date");
   dateInput.value = getTodayString();
 }
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  console.log(topicInput.value);
+  console.log(dateInput.value);
+});
