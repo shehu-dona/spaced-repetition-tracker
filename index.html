@@ -1,21 +1,37 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
+    <title>Spaced Repetition Tracker</title>
     <script type="module" src="script.mjs"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Spaced Repetition Tracker</h1>
-    <section>
-      <h2>Choose a user</h2>
-      <label for="user-select">User</label>
-      <select id="user-select">
-        <option value="">Select a User</option>
-      </select>
-    </section>
-    <section>
-      <h2>Agenda</h2>
-      <div id="agenda"></div>
-    </section>
+    <main>
+      <h1>Spaced Repetition Tracker</h1>
+      <section>
+        <h2>Choose a user</h2>
+        <label for="user-select">User</label>
+        <select id="user-select">
+          <option value="">Select a User</option>
+        </select>
+      </section>
+      <section>
+        <h2>Add a topic</h2>
+        <form id="topic-form">
+          <label for="topic">Topic name</label>
+          <input id="topic" type="text" required />
+          <label for="date">Pick a date</label>
+          <input id="date" type="date" required />
+          <p id="form-message" role="alert"></p>
+          <div>
+            <button type="submit">Add Topic</button>
+          </div>
+        </form>
+      </section>
+      <section>
+        <h2>Agenda</h2>
+        <div id="agenda"></div>
+      </section>
+    </main>
   </body>
 </html>

@@ -1,8 +1,7 @@
 export function getUserIds() {
   return ["1", "2", "3", "4", "5"];
 }
-
-// Turns a date string like "2027-07-19" into a Date object at midnight UTC.
+//parseDate splits the string "2027-07-19" into [2027, 7, 19] and builds a date object at midnight UTC.
 export function parseDate(dateString) {
   // takes the date picker string, like "2027-07-19"
   const splitDate = dateString.split("-"); // splits the text at each "-" ==> ["2027", "07", "19"]
@@ -44,4 +43,13 @@ export function calculateRevisionDates(dateString) {
     return date.toISOString().slice(0, 10);
   });
   return stringRevisionDates;
+}
+
+export function getTodayString() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+  const stringDate = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  return stringDate;
 }
