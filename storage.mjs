@@ -26,12 +26,3 @@ export function addData(userId, data) {
 
   localStorage.setItem(key, JSON.stringify(newData));
 }
-
-/**
- * Clears all data associated with a specific user. NOTE: This is provided to help with development, and is not required in the final code
- *
- * @param {string} userId The user id to clear associated data for
- */
-export function clearData(userId) {
-  localStorage.removeItem(`stored-data-user-${userId}`);
-}
